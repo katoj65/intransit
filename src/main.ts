@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import store from './store'
 
 import { IonicVue } from '@ionic/vue';
 
@@ -22,11 +23,29 @@ import '@ionic/vue/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { createStore } from 'vuex';
+const store = createStore({
+  state () {
+    return {
+      session:null,
+
+    }
+  },
+  mutations: {
+  loggedIn(state) {
+state.session=true;
+    }
+  }
+});
+
+
+
 
 const app = createApp(App)
   .use(IonicVue)
+  .use(store)
   .use(router);
-  
+
 router.isReady().then(() => {
   app.mount('#app');
 });
