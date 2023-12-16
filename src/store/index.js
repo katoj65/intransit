@@ -1,17 +1,20 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-Vue.use(Vuex)
+import { createStore } from 'vuex';
+// Create a new store instance.
+const store = createStore({
+state:{
+session:false,
+  },
+mutations: {
+hasAccess(state) {
+state.session=true;
+},
+noAccess(state) {
+state.session=false;
+},
 
-export default new Vuex.Store({
-  state: {
-  session:null,
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
+
   }
 });
+
+
+export default store;
