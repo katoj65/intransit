@@ -91,7 +91,7 @@ ion-toolbar {
 --background:#0c3e29;
 --color: white;
 --min-height: 80px;
---padding-top: 20px;
---padding-bottom: 20px;
+--padding-top: 0px;
+--padding-bottom:0px;
 }
 </style>

@@ -15,18 +15,16 @@
 </ion-buttons>
 <ion-title style="font-weight:bolder;font-size:20px;" size="large">
 
-    <ion-chip>
-        <ion-avatar>
-          <img src="https://ionicframework.com/docs/img/demos/avatar.svg" style="width:30px;height:30px;" />
-        </ion-avatar>
-        <ion-label style="font-weight:bolder;font-size:20px;background:color:none;"> {{ title }}</ion-label>
-      </ion-chip>
+
+
+<ion-button class="title" fill="clear">
+<ion-icon slot="start" :icon="car"></ion-icon>
+{{ title }}
+</ion-button>
 
 
 
-
-</ion-title><br/>
-
+</ion-title>
 </ion-toolbar>
 <slot class="ion-padding" name="subtitle"></slot>
 </ion-header>
@@ -52,16 +50,16 @@
 
 <script>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-IonBackButton, IonButton, IonButtons, IonIcon,IonAvatar,IonLabel,IonChip
+IonBackButton, IonButton, IonButtons, IonIcon,
 } from '@ionic/vue';
 import { create, ellipsisHorizontal, ellipsisVertical, helpCircle, search, personCircle, star,
-notifications,location
+notifications,location,car
 } from 'ionicons/icons';
 
 
 export default{
 components:{IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-IonBackButton, IonButton, IonButtons, IonIcon,IonAvatar,IonLabel,IonChip
+IonBackButton, IonButton, IonButtons, IonIcon,
 
 
 },
@@ -77,7 +75,7 @@ data(){return{
 setup(){
 return{
 create, ellipsisHorizontal, ellipsisVertical, helpCircle, search, personCircle, star,
-notifications,location
+notifications,location,car
 }
 }
 
@@ -92,13 +90,22 @@ ion-toolbar {
 --background:#0c3e29;
 --color: white;
 --min-height: 80px;
---padding-top: 20px;
---padding-bottom: 20px;
+--padding-top: 0px;
+--padding-bottom:0px;
 }
 
 ion-chip {
     --background:#0c3e29;
     --color: white;
     margin-top:20px;
+    z-index: 10000;
   }
+ion-button.title{
+    --background:#0c3e29;
+    font-weight: bolder;
+    font-size:20px;
+    --color:white;
+}
+
+
 </style>
