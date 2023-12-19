@@ -9,7 +9,7 @@ Profile
 <ion-segment-button value="segment">
 <ion-button fill="clear">
 <ion-icon slot="start" :icon="heart"></ion-icon>
-Booking
+Requests
 </ion-button>
 </ion-segment-button>
 <ion-segment-button value="buttons">

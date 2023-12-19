@@ -1,9 +1,10 @@
 <template>
 <ion-page>
 <ion-header class="ion-no-border" style="background:#0c3e29;">
-<ion-toolbar class="ion-no-border" >
+<ion-toolbar class="ion-no-border">
 <ion-buttons slot="start">
 <ion-back-button default-href="#" v-if="back!=null" @click="$router.push(back)"></ion-back-button>
+<ion-icon slot="end" :icon="car"></ion-icon>
 </ion-buttons>
 
 
@@ -15,13 +16,7 @@
 </ion-buttons>
 <ion-title style="font-weight:bolder;font-size:20px;" size="large">
 
-
-
-<ion-button class="title" fill="clear">
-<ion-icon slot="start" :icon="car"></ion-icon>
 {{ title }}
-</ion-button>
-
 
 
 </ion-title>
