@@ -10,6 +10,9 @@ import NotificationPage from '../views/NotificationPage.vue';
 import MyLocationPage from '../views/MyLocationPage.vue';
 import TransporterPage from '../views/TransporterPage.vue';
 import TransporterProfile from '../views/TransporterProfile.vue';
+import RequestsPage from '../views/RequestsPage.vue';
+import DriverPage from '../views/DriverPage.vue';
+import RequestForm from '../views/RequestForm.vue';
 
 //authentication
 import auth from '../auth/authentication.js';
@@ -97,6 +100,21 @@ redirect:'/transporter/profile',
     path:'/transporter/profile',
     component:TransporterProfile,
     name:'transporter profile'
+    },
+    {
+      path:'/transporter/requests',
+      component:RequestsPage,
+      name:'requests page',
+    },
+    {
+    path:'/transporter/driver',
+    component:DriverPage,
+    name:'driver page',
+    },
+    {
+      path:'/transporter/request/form',
+      component:RequestForm,
+      name:'request form'
     }
 
 

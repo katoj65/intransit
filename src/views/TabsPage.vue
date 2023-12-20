@@ -2,6 +2,8 @@
   <ion-page>
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
+
+<float-menu/>
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="tab1" href="/tabs/tab1">
           <ion-icon aria-hidden="true" :icon="triangle" />
@@ -22,7 +24,33 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script>
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
 import { ellipse, square, triangle } from 'ionicons/icons';
+import FloatMenu from '@/components/FloatMenu.vue';
+export default{
+components:{IonTabBar, IonTabButton, IonTabs,
+  IonLabel, IonIcon, IonPage,
+  IonRouterOutlet, FloatMenu
+
+
+},
+setup(){
+return{
+ellipse,
+square,
+triangle,
+
+}
+}
+
+
+
+
+
+}
+
+
+
+
 </script>

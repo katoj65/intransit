@@ -9,11 +9,11 @@
 
 
 
-<ion-card>
+<ion-card style="padding:0;margin:0;">
 <div style="background-color:#0c3e29;padding:0;">
-<div style="color:red;position:absolute;right:10px;top:200px;color:white;font-weight:bolder;">UBA<br/>933J
+<div style="position:absolute;right:10px;top:200px;color:white;font-weight:bolder;">UBA<br/>933J
 </div>
-<img src="/public/images/car.jpeg" style="border-radius:0px 0px 400px;height:280px;margin-top:20px;" />
+<img src="/public/images/car.jpeg" style="border-radius:0px 0px 400px;height:280px;margin-top:0px;" />
 
 
 
@@ -36,37 +36,35 @@
 
 
 </div>
+
+
+
+
 <ion-card-content style="padding:0;">
-
-
-
-
 <ion-list :inset="false" style="box-shadow:none;margin-top:-10px;">
-
-
-
-
-
 <ion-item lines="none">
 <ion-icon color="danger" slot="start" :icon="listCircle" size="large"></ion-icon>
 <ion-label>
 <h2>
-Number
+ID Number
 </h2>
 <p>
 390976541
 </p>
 </ion-label>
-<ion-button slot="end" size="default"  fill="clear">
-<ion-icon slot="end" :icon="send"></ion-icon>
+<ion-button slot="end" size="default"  fill="clear"
+ @click="$router.push('/transporter/request/form')">
+<ion-icon slot="end" :icon="arrowForward"></ion-icon>
 Request</ion-button>
 </ion-item>
 
 
 
 
-<ion-item :button="true" lines="none" v-for="(l,key) in list" :key="key">
-<ion-icon color="danger" slot="start" :icon="listCircle" size="large"></ion-icon>
+
+
+<ion-item lines="none" v-for="(l,key) in list" :key="key">
+<ion-icon color="danger" slot="start" :icon="l.icon" size="large"></ion-icon>
 <ion-label>
 <h2 style="text-transform: capitalize;">{{ l.title }} </h2>
 <p>{{ l.description }} </p>
@@ -84,15 +82,8 @@ Request</ion-button>
 
 
 </ion-list>
-
-
-
-
 </ion-card-content>
 </ion-card>
-
-
-
 
 
 
@@ -107,8 +98,8 @@ IonLabel,IonItem,IonList,IonIcon,IonNote,IonButton, IonAvatar,
 
 } from '@ionic/vue';
 import TabBar from '@/components/TabBar.vue';
-import TransporterLayout from '../components/TrasporterLayout.vue';
-import { chevronForward, listCircle, send, ellipse  } from 'ionicons/icons';
+import TransporterLayout from '../components/TransporterLayout.vue';
+import { chevronForward, listCircle, send, ellipse,idCard,location,shieldCheckmark,car,star,arrowForward  } from 'ionicons/icons';
 export default {
 components:{
 TransporterLayout,
@@ -124,15 +115,14 @@ data(){return{
 title:'UBA 933J',
 back:'/tabs/tab3',
 
-driver:{name:'Joshua Kato Mukasa',gender:'Male',age:'35 Years of age',tag:'Available'},
+driver:{name:'Joshua Kato',gender:'Male',age:'35 Years of age',tag:'Available'},
 
 list:[
-{title:'ID Number',description:'Kampala - Masaka road',tag:'3:00 PM',icon:''},
-{title:'Route',description:'Kampala - Masaka road',tag:'3:00 PM',icon:''},
-{title:'Stage',description:'Gwowonyegere Stage',tag:'',icon:''},
-{title:'Driver Licence',description:'Valid',tag:'2020',icon:''},
-{title:'Car Condition',description:'Service date',tag:'12/12/2020',icon:''},
-{title:'Rating',description:'Good service',tag:'5 Stars',icon:''},
+{title:'Route',description:'Kampala - Masaka road',tag:'3:00 PM',icon:idCard},
+{title:'Stage',description:'Gwowonyegere Stage',tag:'',icon:location},
+{title:'Driver Licence',description:'Validity',tag:'12/01/2025',icon:shieldCheckmark},
+{title:'Car Condition',description:'Service date',tag:'12/12/2020',icon:car},
+{title:'Rating',description:'Good service',tag:'5 Stars',icon:star},
 ],
 
 
@@ -147,6 +137,15 @@ listCircle,
 chevronForward,
 send,
 ellipse,
+idCard,
+location,
+shieldCheckmark,
+star,
+arrowForward
+
+
+
+
 
 
 }}
@@ -161,15 +160,15 @@ margin:0;border-radius:0;
 }
 
 ion-button{
-    --background:#0c3e29;
-   --padding:20px;
-   color:white;
-   font-weight: bold;
+--background:#0c3e29;
+--padding:20px;
+color:white;
+font-weight: bold;
 }
 
 h1{
-    --color:white;
-    font-weight:bold;
+--color:white;
+font-weight:bold;
 }
 
 ion-icon.available{
@@ -184,6 +183,10 @@ margin-top:-75px;
 color:white;
 position: absolute;
 }
+
+ion-avatar {
+    --border-radius: 4px;
+  }
 
 </style>
 
