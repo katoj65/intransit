@@ -1,31 +1,25 @@
 <template>
 <ion-page>
 <ion-header class="ion-no-border" style="background:#0c3e29;">
-<ion-toolbar class="ion-no-border" >
+<ion-toolbar class="ion-no-border">
 <ion-buttons slot="start">
 <ion-back-button default-href="#" v-if="back!=null" @click="$router.push(back)"></ion-back-button>
-<!-- <img :src="'/icon-white.png'" style="height:50px;"/> -->
+<ion-icon slot="end" :icon="car"></ion-icon>
 </ion-buttons>
-
-
 
 
 
 <ion-buttons slot="end">
-<ion-button @click="$router.push('/my-location')">
-<ion-icon :ios="location" :md="location"></ion-icon>
-</ion-button>
-
-<ion-button @click="$router.push('/notifications')">
-<ion-icon :ios="notifications" :md="notifications"></ion-icon>
-</ion-button>
-
 <ion-button @click="$router.push('/settings')">
 <ion-icon :ios="ellipsisHorizontal" :md="ellipsisVertical"></ion-icon>
 </ion-button>
 </ion-buttons>
-<ion-title style="font-size:18px;">{{ title }} </ion-title><br/>
+<ion-title style="font-weight:bolder;font-size:20px;" size="large">
 
+{{ title }}
+
+
+</ion-title>
 </ion-toolbar>
 <slot class="ion-padding" name="subtitle"></slot>
 </ion-header>
@@ -46,7 +40,6 @@
 
 
 </ion-content>
-<slot name="footer"/>
 </ion-page>
 </template>
 
@@ -55,7 +48,7 @@ import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
 IonBackButton, IonButton, IonButtons, IonIcon,
 } from '@ionic/vue';
 import { create, ellipsisHorizontal, ellipsisVertical, helpCircle, search, personCircle, star,
-notifications,location
+notifications,location,car
 } from 'ionicons/icons';
 
 
@@ -77,7 +70,7 @@ data(){return{
 setup(){
 return{
 create, ellipsisHorizontal, ellipsisVertical, helpCircle, search, personCircle, star,
-notifications,location
+notifications,location,car
 }
 }
 
@@ -91,8 +84,23 @@ notifications,location
 ion-toolbar {
 --background:#0c3e29;
 --color: white;
---min-height: 50px;
+--min-height: 80px;
 --padding-top: 0px;
 --padding-bottom:0px;
 }
+
+ion-chip {
+    --background:#0c3e29;
+    --color: white;
+    margin-top:20px;
+    z-index: 10000;
+  }
+ion-button.title{
+    --background:#0c3e29;
+    font-weight: bolder;
+    font-size:20px;
+    --color:white;
+}
+
+
 </style>

@@ -1,55 +1,15 @@
 <template>
-<transporter-layout :title="title" :back="back">
-<template #subtitle>
-<tab-bar style="margin-top:0px;"/>
+<transporter-layout :title="title" :back="back" :subtitle="subtitle" :avatar="true">
+
+
+<template #footer>
+<driver-footer/>
 </template>
-
-<ion-card>
-<ion-list :inset="false" style="margin-top:-10px;">
-<ion-item  lines="none" class="userheader">
-<ion-avatar slot="start">
-<img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-</ion-avatar>
-<ion-label>
-<h3 style="font-size:20px;weight:bolder;">
-{{ user.names }}
-</h3>
-</ion-label>
-<ion-note slot="end" style="font-size:17px;">
-Available
-</ion-note>
-</ion-item>
-</ion-list>
-
-<ion-card-content style="padding:0;">
-<ion-list :inset="false">
-
-
-
-<ion-item v-for="(l,key) in list" lines="none">
-<ion-label>{{ l.title }} </ion-label>
-<ion-note slot="end" style="font-size:17px;">
-{{ l.value }}
-</ion-note>
-</ion-item>
-</ion-list>
-<div style="height:150px;"></div>
-
-
-
-
-
-</ion-card-content>
-</ion-card>
-<div style="padding:3px;background:#EBEDEF;border-radius: 30px 30px 0 0;position:fixed;width:100%;bottom:0;">
-<ion-button expand="block" fill="clear">
-<ion-icon :icon="time" slot="start"></ion-icon>
-No Task</ion-button>
-</div>
 </transporter-layout>
 </template>
 <script>
 import TransporterLayout from '@/components/TransporterLayout.vue';
+import DriverFooter from '@/components/DriverFooter.vue';
 import TabBar from '@/components/TabBar.vue';
 import { time} from 'ionicons/icons';
 import { IonCard, IonCardContent,IonAvatar,
@@ -59,7 +19,7 @@ IonList,
 IonNote,
 IonText,
 IonButton,
-IonIcon
+IonIcon,
 } from '@ionic/vue';
 export default {
 components:{
@@ -75,15 +35,18 @@ IonList,
 IonNote,
 IonText,
 IonButton,
-IonIcon
+IonIcon,
+DriverFooter
 
 },
 data(){return{
-title:'UBA 933J',
+title:'Joshua Kato',
+subtitle:'Driver - UBA 933J',
 back:'/transporter/profile',
 user:{
 names:'Joshua Kato',
-role:'Driver'
+role:'Driver',
+number:'UBA 933J'
 },
 
 
@@ -101,6 +64,9 @@ list:[
 ],
 
 }},
+
+
+
 methods:{
 
 
@@ -135,8 +101,8 @@ box-shadow:none;
 }
 ion-item.userheader{
 --background:#EBEDEF;
---padding-bottom:10px;
---padding-top:10px;
+--padding-bottom:5px;
+--padding-top:5px;
 }
 
 </style>

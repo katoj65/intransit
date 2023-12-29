@@ -1,5 +1,5 @@
 <template>
-<transporter-layout :title="title" :back="back">
+<transporter-layout :title="title" :back="back" :subtitle="subtitle" :avatar="true">
 <template #subtitle>
 <tab-bar style="margin-top:0px;"/>
 </template>
@@ -42,10 +42,12 @@ export default {
 components:{
 TransporterLayout,
 TabBar,IonItem, IonLabel,
-IonList,IonNote,IonText
+IonList,IonNote,IonText,
+TabBar,
 },
 data(){return{
-title:'UBA 933J',
+title:'Joshua Kato',
+subtitle:'Driver - UBA 933J',
 back:'/transporter/profile',
 }},
 methods:{

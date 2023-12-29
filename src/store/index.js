@@ -4,6 +4,18 @@ const store = createStore({
 state:{
 session:false,
   },
+
+settings:{
+driver_chat:{
+options:[
+
+
+],
+state:false,
+}
+
+
+},
 mutations: {
 hasAccess(state) {
 state.session=true;

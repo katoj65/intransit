@@ -1,87 +1,31 @@
 <template>
-<transporter-layout :title="title" :back="back">
+<transporter-layout :title="title" :back="back" :subtitle="subtitle" :avatar="true">
 <template #subtitle>
 <tab-bar style="margin-top:0px;"/>
 </template>
 
 
-
-
-
-
 <ion-card style="padding:0;margin:0;">
-<div style="background-color:#0c3e29;padding:0;">
-<div style="position:absolute;right:10px;top:200px;color:white;font-weight:bolder;">UBA<br/>933J
-</div>
-<img src="/public/images/car.jpeg" style="border-radius:0px 0px 400px;height:280px;margin-top:0px;" />
+<div style="background-color:#0c3e29;padding:0;margin:0;">
 
-
+<img src="/public/images/car.jpeg" style="border-radius:0px 0px  240px 0px;height:280px;margin-top:0px;" />
 
 <div>
 <ion-item lines="none" class="user">
-<ion-avatar aria-hidden="true" slot="start" style="border:solid 4px white;">
-<img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-</ion-avatar>
 <ion-label>
-<h1 style="color:white;text-shadow: 0px 0px 3px black;" class="user_name">
-{{ driver.name }}
-</h1>
-<p class="user-details" style="color:white;text-shadow: 0px 0px 3px black;font-size:17px;">
-{{ driver.gender }} . {{ driver.age }}.
+<p class="user-details" style="color:white;text-shadow: 0px 0px 4px black;font-size:17px;padding-top:30px;">
+UBA 933J
 </p>
 </ion-label>
-<ion-icon class="available" slot="end" :icon="ellipse"></ion-icon>
+Online
 </ion-item>
 </div>
 
 
 </div>
-
-
 
 
 <ion-card-content style="padding:0;">
-<ion-list :inset="false" style="box-shadow:none;margin-top:-10px;">
-<ion-item lines="none">
-<ion-icon color="danger" slot="start" :icon="listCircle" size="large"></ion-icon>
-<ion-label>
-<h2>
-ID Number
-</h2>
-<p>
-390976541
-</p>
-</ion-label>
-<ion-button slot="end" size="default"  fill="clear"
- @click="$router.push('/transporter/request/form')">
-<ion-icon slot="end" :icon="arrowForward"></ion-icon>
-Request</ion-button>
-</ion-item>
-
-
-
-
-
-
-<ion-item lines="none" v-for="(l,key) in list" :key="key">
-<ion-icon color="danger" slot="start" :icon="l.icon" size="large"></ion-icon>
-<ion-label>
-<h2 style="text-transform: capitalize;">{{ l.title }} </h2>
-<p>{{ l.description }} </p>
-</ion-label>
-<ion-note slot="end" style="font-size:14px;">
-{{ l.tag }}
-</ion-note><br/>
-</ion-item>
-
-
-
-
-
-
-
-
-</ion-list>
 </ion-card-content>
 </ion-card>
 
@@ -89,17 +33,72 @@ Request</ion-button>
 
 
 
+
+<div style="padding:5px;">
+  <ion-list :inset="false" style="box-shadow:none;">
+    <ion-item lines="none">
+    <ion-icon slot="start" :icon="idCard" size="large"></ion-icon>
+    <ion-label>
+    <h2>
+    ID Number
+    </h2>
+    <p>
+    390976541
+    </p>
+    </ion-label>
+    <ion-note>
+    </ion-note>
+    </ion-item>
+
+
+
+
+
+
+
+
+ 
+    <ion-item lines="none" v-for="(l,key) in list" :key="key">
+    <ion-icon  slot="start" :icon="l.icon" size="large"></ion-icon>
+    <ion-label>
+    <h2 style="text-transform: capitalize;">{{ l.title }} </h2>
+    <p>{{ l.description }} </p>
+    </ion-label>
+    <ion-note slot="end" style="font-size:14px;">
+    {{ l.tag }}
+    </ion-note><br/>
+    </ion-item>
+
+
+
+    </ion-list>
+</div>
+
+
+
+
+<template #footer>
+<driver-profile-footer/>
+</template>
 </transporter-layout>
 </template>
 <script>
-import { IonCard, IonCardContent,
-IonLabel,IonItem,IonList,IonIcon,IonNote,IonButton, IonAvatar,
-
-
+import {
+IonCard,
+IonCardContent,
+IonLabel,
+IonItem,
+IonList,
+IonIcon,
+IonNote,
+IonButton,
+IonAvatar,
 } from '@ionic/vue';
 import TabBar from '@/components/TabBar.vue';
 import TransporterLayout from '../components/TransporterLayout.vue';
-import { chevronForward, listCircle, send, ellipse,idCard,location,shieldCheckmark,car,star,arrowForward  } from 'ionicons/icons';
+import { chevronForward, listCircle, send, ellipse,idCard,location,shieldCheckmark,car,star,arrowForward,bookmarks  } from 'ionicons/icons';
+import DriverProfileFooter from '../components/DriverProfileFooter.vue';
+
 export default {
 components:{
 TransporterLayout,
@@ -108,18 +107,22 @@ IonCard, IonCardContent,IonLabel,
 IonItem,IonList,IonIcon,IonNote,
 IonButton,
 IonAvatar,
+DriverProfileFooter,
 
 },
 
 data(){return{
-title:'UBA 933J',
-back:'/tabs/tab3',
+title:'Joshua Kato',
+back:'/tabs/tab5',
+subtitle:'Masaka - Kampala',
+
 
 driver:{name:'Joshua Kato',gender:'Male',age:'35 Years of age',tag:'Available'},
 
+
 list:[
-{title:'Route',description:'Kampala - Masaka road',tag:'3:00 PM',icon:idCard},
-{title:'Stage',description:'Gwowonyegere Stage',tag:'',icon:location},
+{title:'Route',description:'Kampala - Masaka road',tag:'3:00 PM',icon:location},
+{title:'Stage',description:'Gwowonyegere Stage',tag:'',icon:bookmarks},
 {title:'Driver Licence',description:'Validity',tag:'12/01/2025',icon:shieldCheckmark},
 {title:'Car Condition',description:'Service date',tag:'12/12/2020',icon:car},
 {title:'Rating',description:'Good service',tag:'5 Stars',icon:star},
@@ -141,12 +144,8 @@ idCard,
 location,
 shieldCheckmark,
 star,
-arrowForward
-
-
-
-
-
+arrowForward,
+bookmarks
 
 }}
 
@@ -185,8 +184,8 @@ position: absolute;
 }
 
 ion-avatar {
-    --border-radius: 4px;
-  }
+--border-radius: 4px;
+}
 
 </style>
 

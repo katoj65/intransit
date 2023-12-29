@@ -1,7 +1,7 @@
 <template>
-  <ion-app>
-  <ion-router-outlet/>
-  </ion-app>
+<ion-app>
+<ion-router-outlet/>
+</ion-app>
 </template>
 <script>
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
@@ -56,5 +56,22 @@ return this.$store.state.session;
 <style>
 ion-button{
 box-shadow:none;
+text-transform: capitalize;
+}
+.content{
+background:#EBEDEF;
+}
+ion-card{
+border-radius: 0;
+}
+
+ion-content{
+--background:#EBEDEF;
+}
+.padding{
+padding:10px;
+}
+.border-bottom{
+border-bottom:solid 1px #EBEDEF;
 }
 </style>
