@@ -1,8 +1,6 @@
 <template>
 <lay-out :title="title">
 
-{{ $store.state.session }}
-
 <div style="background:white;" class="border-bottom">
 <div style="background:white;padding:5px;">
 <ion-searchbar placeholder="Search..."></ion-searchbar>

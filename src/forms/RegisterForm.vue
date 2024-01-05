@@ -2,10 +2,10 @@
 
     <form @submit.prevent="submit" style="padding:0;">
     <div style="padding:50px;padding-bottom:30px;">
-    <img src="/logo2.png" style="width:100%"/>
+    <img src="/logo4.png" style="width:100%"/>
     </div>
 
-    <h4 style="margin-bottom:30px;">REGISTER</h4>
+    <h4 style="margin-bottom:30px;margin-top:-50px;">REGISTER</h4>
     <ion-input placeholder="Enter Firstname" v-model="form.firstname" type="text" required></ion-input>
     <ion-input placeholder="Enter Lastname" v-model="form.lastname" type="text" required></ion-input>
     <ion-input placeholder="Enter Email Address" v-model="form.email" type="email" required></ion-input>
