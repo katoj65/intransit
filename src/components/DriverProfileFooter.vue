@@ -1,10 +1,10 @@
 <template>
 <ion-footer>
 <ion-toolbar>
-<ion-segment value="heart">
+<ion-segment value="">
 
 
-<ion-segment-button layout="icon-start">
+<ion-segment-button layout="icon-start" class="btn1">
 <ion-label>Request</ion-label>
 <ion-icon :icon="megaphone"></ion-icon>
 </ion-segment-button>
@@ -48,20 +48,22 @@
     ion-segment-button{
     text-transform: capitalize;
     margin:4px;
-    color:white;
     border-radius: 10px;
-
+    border:solid thin #0c3e29;
     }
 
+    ion-segment-button.btn1{
+    border:solid thin #0c3e29;
+    }
+
+
     ion-footer{
-    border-top:solid 2px #0c3e29;
-    --background: #0c3e29;
     border-radius:10px 10px 0 0;
     }
 
     ion-toolbar{
-    --background:#0c3e29;
     border-radius:10px 10px 0 0;
+    border:solid thin #0c3e29;
     }
 
     ion-segment{

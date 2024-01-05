@@ -34,7 +34,7 @@ Online
 
 
 
-<div style="padding:5px;">
+<div style="padding:5px;padding-bottom:0;">
   <ion-list :inset="false" style="box-shadow:none;">
     <ion-item lines="none">
     <ion-icon slot="start" :icon="idCard" size="large"></ion-icon>
@@ -57,7 +57,7 @@ Online
 
 
 
- 
+
     <ion-item lines="none" v-for="(l,key) in list" :key="key">
     <ion-icon  slot="start" :icon="l.icon" size="large"></ion-icon>
     <ion-label>

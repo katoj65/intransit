@@ -13,25 +13,19 @@ import TransporterProfile from '../views/TransporterProfile.vue';
 import RequestsPage from '../views/RequestsPage.vue';
 import DriverPage from '../views/DriverPage.vue';
 import RequestForm from '../views/RequestForm.vue';
-import TasksPage from '../views/TasksPage.vue';
 import WalletPage from '../views/WalletPage.vue';
 import WalletComponent from '../views/WalletComponent.vue';
 import TaskList from '../views/TaskList.vue';
-import DeliveryPage from '../views/DeliveryPage.vue';
-import TransportPage from '../views/TransporterPage.vue';
 import WeatherPage from '../business/WeatherPage.vue';
 import MyWeather from '../business/MyWeather.vue';
 
 //authentication
-import auth from '../auth/authentication.js';
 import store from '../store/index.js';
-const session=store.state.session;
-const my_auth=auth;
 
 const routes: Array<RouteRecordRaw> = [
 {
 path: '/',
-redirect:my_auth==true?'/tabs/tab1':'/account/'
+redirect:'/tabs/tab1'
 },
 {
 path: '/tabs/',
@@ -39,24 +33,31 @@ component: TabsPage,
 children: [
 {
 path: '',
-redirect: '/tabs/tab1'
+redirect: '/tabs/tab1',
 },
 {
 path: 'tab1',
-component: () => import('@/views/Tab1Page.vue')
+name:'tab1',
+component: () => import('@/views/Tab1Page.vue'),
+meta:{auth:false}
 },
 {
 path: 'tab2',
-component: () => import('@/views/Tab2Page.vue')
+name:'tab2',
+component: () => import('@/views/Tab2Page.vue'),
+meta:{auth:true}
 },
 {
 path: 'tab3',
-component: () => import('@/views/Tab3Page.vue')
+name:'tab3',
+component: () => import('@/views/Tab3Page.vue'),
+meta:{auth:true}
 },
 {
 path:'tab5',
+name:'tab5',
 component:()=>import('@/views/TransportTab.vue'),
-name:'tab5'
+meta:{auth:true}
 }
 ]
 },
@@ -175,6 +176,12 @@ children:[
 
 
 ]
+},
+{
+  path:'/login',
+  component:()=>import('@/views/LoginPage.vue'),
+  name:'login',
+
 }
 
 
@@ -186,11 +193,30 @@ children:[
 
 
 
-]
+];
 
 const router = createRouter({
 history: createWebHistory(import.meta.env.BASE_URL),
 routes
-})
+});
 
-export default router
+
+
+
+//Navigation Guard
+router.beforeEach((to, from,next)=>{
+const auth=store.state.session;
+if(to.name!='login'){
+console.log(auth);
+if(auth==false){
+next('/login');
+}else{
+next();
+}
+}else{
+next();
+}
+});
+
+
+export default router;

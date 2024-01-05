@@ -1,13 +1,12 @@
 <template>
 <ion-page>
 <ion-content>
-  {{ $store }}
 <form @submit.prevent="submit">
 <div v-if="screen==='login'">
 <div style="padding:50px;padding-bottom:50px;">
-<img src="/logo2.png" style="width:100%"/>
+<img src="/logo4.png" style="width:100%"/>
 </div>
-<h4 style="margin-bottom:30px;">LOGIN</h4>
+<h4 style="margin-bottom:30px;margin-top:-50px;">LOGIN</h4>
 <ion-input placeholder="Enter email address" v-model="form.email" type="email" required></ion-input>
 <ion-input placeholder="Enter password" v-model="form.password" type="password" required></ion-input>
 <ion-button type="submit">Login</ion-button>
@@ -56,11 +55,11 @@ background:#0c3e29;
 }
 
 ion-input{
-border:solid 2px white;
+border:solid 2px #0c3e29;
 margin-bottom:10px;
 text-align: center;
 border-radius:5px;
-color:white;
+
 }
 
 form{
@@ -70,11 +69,11 @@ padding:20px;
 ion-button{
 width:100%;
 --border-radius:5px;
---background:white;
-color:#0c3e29;
+--background:#0c3e29;
 margin:0;
 margin-bottom:10px;
 --padding:15px;
+color:white;
 
 }
 h4{
@@ -84,14 +83,16 @@ color:white;
 }
 
 .register{
---background: #0c3e29;
-color: white;
+--background:white;
 margin-top:10px;
+color:black;
+border:solid thin #0c3e29;
+border-radius:5px;
 }
 
 ion-content {
-    --background:#0c3e29;
-    --color: #fff;
+    --background:white;
+
   }
 
 

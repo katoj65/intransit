@@ -4,7 +4,6 @@
 <div>
 <ion-searchbar :search-icon="location" placeholder="Enter your location" v-model="form.from"></ion-searchbar>
 </div>
-<div class="border-bottom" style="margin-left:20px;margin-right:20px"></div>
 <div>
 <ion-searchbar :search-icon="location" placeholder="Enter your destination" model="form.to"></ion-searchbar>
 </div>
@@ -135,10 +134,10 @@ time,
 
 
 ion-searchbar{
---background:#F4F6F6;
+--background:#EBEDEF;
 --box-shadow: none;
-border-radius:10px 10px 10px 10px;
-
+--border-radius:10px;
+font-size: 14px;
 
 }
 

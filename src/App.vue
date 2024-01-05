@@ -5,18 +5,17 @@
 </template>
 <script>
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
-
-import { StatusBar} from '@capacitor/status-bar';
+import { StatusBar, Style} from '@capacitor/status-bar';
 
 export default{
 components:{
-  IonApp, IonRouterOutlet,
+IonApp, IonRouterOutlet,
 
 },
 methods:{
 
 test(){
-console.log(this.$store.state.session);
+//console.log(this.$store.state.session);
 },
 
 status(){
@@ -25,8 +24,14 @@ status(){
 
 //settings
 async settings(){
-await StatusBar.setBackgroundColor({ color: '#0c3e29' });
-}
+await StatusBar.setBackgroundColor({ color: '#FFFFFF' });
+},
+
+async setStatusBarStyleLight(){
+await StatusBar.setStyle({ style: Style.Light });
+},
+
+
 
 
 
@@ -38,7 +43,7 @@ mounted(){
 this.test();
 this.status();
 this.settings();
-
+this.setStatusBarStyleLight();
 },
 
 computed:{
@@ -57,21 +62,30 @@ return this.$store.state.session;
 ion-button{
 box-shadow:none;
 text-transform: capitalize;
+color:#37474F;
 }
 .content{
 background:#EBEDEF;
+color:#37474F;
 }
 ion-card{
 border-radius: 0;
+color:#37474F;
 }
 
 ion-content{
 --background:#EBEDEF;
+color:#37474F;
 }
 .padding{
 padding:10px;
 }
 .border-bottom{
 border-bottom:solid 1px #EBEDEF;
+}
+ion-label{color:#37474F;}
+
+.border{
+  border:solid 1px #EBEDEF;
 }
 </style>
