@@ -14,6 +14,9 @@
 
 
 
+
+
+
   <ion-list :inset="false" style="margin:5px;">
   <ion-item v-for="n in 20" :key="n"  lines="none" @click="$router.push('/transporter/profile')">
   <ion-avatar aria-hidden="true" slot="start">
@@ -31,11 +34,14 @@
   <ion-note slot="end">
   10:00 PM<br/>
   <span style="float:right;">
-      <ion-icon :ios="time" :md="time" style="color:#0c3e29;font-size:20px"></ion-icon>
+  <ion-icon :ios="time" :md="time" style="color:#0c3e29;font-size:20px"></ion-icon>
   </span>
   </ion-note>
   </ion-item>
   </ion-list>
+
+
+
 
 
 

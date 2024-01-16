@@ -3,10 +3,6 @@
 <template #footer>
 <wallet-footer/>
 </template>
-
-
-
-
 <ion-card>
 <ion-card-header>
 <ion-card-title>Balance </ion-card-title>
@@ -14,34 +10,30 @@
 </ion-card-header>
 <ion-card-content style="padding:0;padding-bottom:20px;">
 
-<ion-item lines="none">
-<ion-icon :icon="wallet" slot="start"></ion-icon>
-<ion-label>
 
+
+<ion-item lines="none">
+<ion-label>
 Wallet Address</ion-label>
-<ion-note slot="end">
+<ion-note slot="end" style="font-size:16px;">
 098765357
 </ion-note>
 </ion-item>
 </ion-card-content>
 </ion-card>
+<div class="border-bottom"></div>
 
 
 
 
 
-
-<div style="margin-top:1px;">
-
-<ion-item button detail="true" v-for="(l,key) in list" :key="key" lines="none">
+<div style="margin:5px;border-bottom:none;" class="border">
+<ion-item button detail="true" v-for="(l,key) in list" :key="key" lines="none" class="border-bottom">
 <ion-label>
 <h3>{{ l.title }} </h3>
 </ion-label>
 </ion-item>
 </div>
-
-
-
 
 
 
@@ -56,7 +48,7 @@ import LayOut from '@/components/LayOut.vue';
 import {
 
 IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
-IonItem, IonLabel, IonNote,IonIcon
+IonItem, IonLabel, IonNote
 
 } from '@ionic/vue';
 import {
@@ -69,7 +61,7 @@ LayOut,
 IonButton, IonCard, IonCardContent,
 IonCardHeader, IonCardSubtitle, IonCardTitle,
 WalletFooter,IonItem, IonLabel, IonNote,
-IonIcon
+
 
 
 

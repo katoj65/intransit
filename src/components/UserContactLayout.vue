@@ -8,6 +8,7 @@
 <ion-avatar slot="start" style="width:40px;" v-if="avatar==true">
 <img src="https://ionicframework.com/docs/img/demos/avatar.svg" style="width:40px;height:40px;margin-top:10px;" />
 </ion-avatar>
+
 </ion-buttons>
 <ion-buttons slot="end">
 <ion-button @click="$router.push('/settings')">
@@ -38,12 +39,26 @@
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent,
-IonBackButton, IonButton, IonButtons, IonIcon,IonAvatar
+import {
+IonAvatar,
+IonBackButton, IonButton, IonButtons,
+IonContent,
+IonHeader,
+IonIcon,
+IonPage,
+IonTitle,
+IonToolbar
 } from '@ionic/vue';
-import { create, ellipsisHorizontal,
-   ellipsisVertical, helpCircle, search, personCircle, star,
-notifications,location,car,mail
+import {
+car,
+create, ellipsisHorizontal,
+ellipsisVertical, helpCircle,
+location,
+mail,
+notifications,
+personCircle,
+search,
+star
 } from 'ionicons/icons';
 
 
@@ -83,25 +98,28 @@ notifications,location,car,mail
 </script>
 <style scoped>
 ion-toolbar {
---background:#0c3e29;
---color: white;
+--background:white;
 --min-height: 50px;
 --padding-top: 0px;
 --padding-bottom:0px;
 }
 
 ion-chip {
-    --background:#0c3e29;
-    --color: white;
+
     margin-top:20px;
     z-index: 10000;
   }
 ion-button.title{
-    --background:#0c3e29;
+
     font-weight: bolder;
     font-size:20px;
     --color:white;
 }
 
+ion-toolbar{
+border-bottom:solid 2px #F2F3F4;
+padding-bottom:5px;
+
+}
 
 </style>

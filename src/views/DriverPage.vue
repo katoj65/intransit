@@ -1,7 +1,5 @@
 <template>
 <transporter-layout :title="title" :back="back" :subtitle="subtitle" :avatar="true">
-
-
 <template #footer>
 <driver-footer/>
 </template>

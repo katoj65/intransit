@@ -24,7 +24,7 @@ status(){
 
 //settings
 async settings(){
-await StatusBar.setBackgroundColor({ color: '#FFFFFF' });
+await StatusBar.setBackgroundColor({ color: '#F0F3F4' });
 },
 
 async setStatusBarStyleLight(){
@@ -65,7 +65,7 @@ text-transform: capitalize;
 color:#37474F;
 }
 .content{
-background:#EBEDEF;
+background:#F0F3F4;
 color:#37474F;
 }
 ion-card{
@@ -74,18 +74,51 @@ color:#37474F;
 }
 
 ion-content{
---background:#EBEDEF;
+--background:#F0F3F4;
 color:#37474F;
 }
 .padding{
 padding:10px;
 }
 .border-bottom{
-border-bottom:solid 1px #EBEDEF;
+  border-bottom: solid 1px #D6DBDF;
 }
-ion-label{color:#37474F;}
+ion-label{
+color:#37474F;
+}
 
 .border{
-  border:solid 1px #EBEDEF;
+  border: solid 1px #D6DBDF;
 }
+.border-top{
+  border-top: solid 1px #D6DBDF;
+}
+
+ion-input{
+  --background: #EEEEEE;
+}
+
+
+
+
+ion-toolbar {
+  --background:#F0F3F4;
+  --color:black;
+  --min-height: 50px;
+  --padding-top: 10px;
+  --padding-bottom:0px;
+  }
+  ion-searchbar{
+  --background:#EBEDEF;
+  --box-shadow: none;
+  --border-radius:20px;
+  font-size: 14px;
+  }
+  ion-header{
+  border-bottom:none;
+  }
+  .border-bottom-light{
+  border-bottom:solid 1px #ECF0F1;
+  }
+
 </style>

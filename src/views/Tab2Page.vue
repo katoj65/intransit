@@ -1,26 +1,32 @@
 <template>
 <lay-out :title="title">
-
-<ion-list :inset="false">
-<ion-item :button="true" v-for="(i,key) in items" :key="key" lines="none">
-<ion-icon  slot="start" :icon="listCircle" size="large"></ion-icon>
-<ion-label>{{ i.title }} </ion-label>
-<ion-note slot="end" style="font-size:15px;">
-{{ i.value }}
-<ion-icon :icon="addOutline" v-if="i.option!=''"></ion-icon>
+<div style="margin:5px;">
+<ion-item :button="true" v-for="(i,key) in items" :key="key" lines="none" class="border">
+<ion-icon  slot="start" :icon="location"></ion-icon>
+<ion-label>
+<h2>{{ i.title }}</h2>
+<p>
+{{ i.location }}
+</p>
+</ion-label>
+<ion-note slot="end" style="text-align:right;">
+{{ i.number }}
+ <div>
+{{ i.time }}
+ </div>
 </ion-note>
 </ion-item>
-</ion-list>
 
+</div>
 </lay-out>
 </template>
 <script>
 
-import { time, listCircle, addCircle, addOutline} from 'ionicons/icons';
+import { time, listCircle, addCircle, addOutline, location} from 'ionicons/icons';
 import {
 IonItem,
 IonLabel,
-IonList,
+
 IonNote,
 IonText,
 IonButton,
@@ -31,7 +37,6 @@ export default {
 components:{
 IonItem,
 IonLabel,
-IonList,
 IonNote,
 IonText,
 IonButton,
@@ -40,18 +45,19 @@ LayOut
 
 },
 data(){return{
-title:'Tasks',
+title:'Activities',
 
 items:[
 
-{title:'Tasks',value:'4 Pending',icon:'',option:''},
-{title:'Appointments',value:5,icon:'',option:'true'},
-{title:'Delivery Services',value:'',icon:'',option:'true'},
-{title:'Report',value:'',icon:'',option:''},
-{title:'Events',value:'',icon:'',option:''},
-{title:'Timeline',value:'',icon:'',option:''},
-{title:'Location',value:'',icon:'',option:''},
-{title:'Payment Log',value:'',icon:'',option:''},
+{title:'Medicine',location:'Masajja -Busabala',number:'UBA 993 J',time:'12:00 AM'},
+{title:'Food',location:'Masajja -Busabala',number:'UBA 993 J',time:'12:00 AM'},
+{title:'Fertilizers',location:'Masajja -Busabala',number:'UBA 993 J',time:'12:00 AM'},
+{title:'Marrum',location:'Masajja -Busabala',number:'UBA 993 J',time:'12:00 AM'},
+{title:'Excavator',location:'Masajja -Busabala',number:'UBA 993 J',time:'12:00 AM'},
+{title:'Cement',location:'Masajja -Busabala',number:'UBA 993 J',time:'12:00 AM'},
+{title:'Soil',location:'Masajja -Busabala',number:'UBA 993 J',time:'12:00 AM'},
+
+
 
 ],
 
@@ -68,7 +74,7 @@ methods:{
 
 
 setup(){return{
-time,listCircle,addCircle,addOutline
+time,listCircle,addCircle,addOutline,location
 }}
 }
 </script>
@@ -81,9 +87,6 @@ border-radius:0;
 box-shadow:none;
 }
 
-ion-avatar {
---border-radius: 4px;
-}
 
 ion-button{
 color:#0c3e29;
@@ -94,10 +97,8 @@ border-radius:5px;
 
 
 }
-ion-item.userheader{
---background:#EBEDEF;
---padding-bottom:5px;
---padding-top:5px;
+ion-item{
+margin-bottom:5px;
 }
 
 </style>

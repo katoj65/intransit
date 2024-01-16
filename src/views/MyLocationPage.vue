@@ -1,7 +1,7 @@
 <template>
 <lay-out :title="title" :back="back">
-<template #subtitle style="margin-top:-20px;">
-<search-bar style="background:#0c3e29;"/>
+<template #subtitle style="margin-top:-20px;" class="border-bototm">
+<search-bar/>
 </template>
 
 <ion-list :inset="false">

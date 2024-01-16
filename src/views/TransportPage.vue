@@ -1,6 +1,7 @@
 <template>
     <lay-out :title="title">
 
+<div style="margin:5px;">
     <ion-list :inset="false">
     <ion-item v-for="n in 20" :key="n"  lines="none">
     <ion-avatar aria-hidden="true" slot="start">
@@ -27,7 +28,7 @@
 
 
 
-
+</div>
 
 
     </lay-out>

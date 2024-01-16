@@ -18,6 +18,10 @@ import WalletComponent from '../views/WalletComponent.vue';
 import TaskList from '../views/TaskList.vue';
 import WeatherPage from '../business/WeatherPage.vue';
 import MyWeather from '../business/MyWeather.vue';
+import ServicesTab from '../views/ServicesTab.vue';
+import AppointmentTab from '../views/AppointmentTab.vue';
+import MessagesTab from '../views/MessageTab.vue';
+import BuyTab from '../views/BuyTab.vue';
 
 //authentication
 import store from '../store/index.js';
@@ -56,7 +60,7 @@ meta:{auth:true}
 {
 path:'tab5',
 name:'tab5',
-component:()=>import('@/views/TransportTab.vue'),
+component:()=>import('@/views/AppointmentsPage.vue'),
 meta:{auth:true}
 }
 ]
@@ -101,16 +105,17 @@ component:MyLocationPage,
 name:'my location',
 },
 {
-path:'/transporter/',
-redirect:'/transporter/profile',
+path:'/transporter',
+redirect:'/transporters',
 },
+
 {
 path:'/transporter',
 component:TransporterPage,
 children:[
 {
-path:'/transporter/profile',
-component:TransporterProfile,
+path:'/transporters',
+component:()=>import('@/views/TransportPage.vue'),
 name:'transporter profile'
 },
 {
@@ -133,9 +138,6 @@ path:'/transprter/route',
 component:()=>import('@/views/DriverRoute.vue'),
 name:'driver route'
 }
-
-
-
 ]
 },
 {
@@ -182,7 +184,94 @@ children:[
   component:()=>import('@/views/LoginPage.vue'),
   name:'login',
 
-}
+},
+{
+  path:'/services',
+  redirect:'/services/view'
+},
+{
+  path:'/services',
+  component:ServicesTab,
+  children:[
+  {
+    path:'/services/view',
+    component:()=>import('@/views/ServicesPage.vue'),
+    name:'services',
+  },
+  {
+    path:'/service/:id/category',
+    component:()=>import('@/views/ShowService.vue'),
+    name:'service category'
+  }
+
+
+  ]
+},
+{
+  path:'/appointment/details',
+  redirect:'/appointment/view'
+},
+{
+  path:'/appointment/details',
+  component:AppointmentTab,
+  children:[
+  {
+    path:'/appointment/view',
+    component:()=>import('@/views/AppointmentDetails.vue'),
+    name:'appointment-view'
+  }
+
+  ]
+},
+{
+  path:'/messages',
+  redirect:'/messages/view'
+},
+{
+  path:'/messages',
+  component:MessagesTab,
+  children:[
+  {
+    path:'/messages/view',
+    component:()=>import('@/views/MessagesPage.vue'),
+    name:'messages'
+  },
+  {
+    path:'/message/user',
+    component:()=>import('@/views/UserMessage.vue'),
+    name:'user-message'
+  }
+  ]
+
+},
+
+
+
+
+//buy
+{
+  path:'/buy',
+  redirect:'/buy/view'
+},
+{
+  path:'/buy',
+  component:BuyTab,
+  children:[
+  {
+    path:'/buy/view',
+    component:()=>import('@/views/BuyItems.vue'),
+    name:'buy'
+  },
+
+
+  ]
+},
+
+
+
+
+
+
 
 
 

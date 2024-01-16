@@ -1,11 +1,11 @@
 <template>
 
     <form @submit.prevent="submit" style="padding:0;">
-    <div style="padding:50px;padding-bottom:30px;">
+    <div style="padding:50px;padding-bottom:30px;padding-top:80px;">
     <img src="/logo4.png" style="width:100%"/>
     </div>
 
-    <h4 style="margin-bottom:30px;margin-top:-50px;">REGISTER</h4>
+    <h4 style="margin-bottom:30px;">REGISTER</h4>
     <ion-input placeholder="Enter Firstname" v-model="form.firstname" type="text" required></ion-input>
     <ion-input placeholder="Enter Lastname" v-model="form.lastname" type="text" required></ion-input>
     <ion-input placeholder="Enter Email Address" v-model="form.email" type="email" required></ion-input>
@@ -34,7 +34,7 @@
 
 methods:{
 submit(){
-this.$store.commit('loggedIn');
+this.$store.commit('hasAccess');
 this.$router.push('/account/select-role');
 }
 
@@ -49,10 +49,11 @@ this.$router.push('/account/select-role');
     }
 
     ion-input{
-    border:solid 2px #0c3e29;
     margin-bottom:10px;
     text-align: center;
+    --border-radius:5px;
     border-radius:5px;
+    --background: #EEEEEE;
     }
 
     form{
@@ -71,7 +72,7 @@ this.$router.push('/account/select-role');
     h4{
     text-align: center;
     font-weight: bold;
-    color:white;
+    color:#0c3e29;
     }
 
     .register{
