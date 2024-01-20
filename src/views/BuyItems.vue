@@ -3,21 +3,26 @@
 <div style="padding:10px;margin-top:15px;">
 
 
-    
-
-
-<ion-item lines="none" v-for="n in 20" :key="n" button  detail="true" class="border-bottom">
+<div v-if="isLoading==true" style="padding:30px;">
+<skeleton-component/>
+</div>
+<div v-else>
+<div v-if="row.length>0">
+<ion-item lines="none" v-for="(l,key) in row" :key="l" button  detail="true">
 <ion-label>
 <h2>
-Some info
+{{ l.name }}
 </h2>
 </ion-label>
 <ion-note slot="end" style="font-size:16px;">
 </ion-note>
 </ion-item>
+</div>
+<div v-else style="padding:10px;">
+No records
+</div>
 
-
-
+</div>
 
 
 
@@ -39,6 +44,7 @@ IonNote,
 } from '@ionic/vue';
 import { time,location,wallet,searchCircle } from 'ionicons/icons';
 import  SkeletonComponent  from "@/components/SkeletonComponent.vue";
+import BusinessController from '@/database/BusinessController.js';
 export default {
 components:{
 IonButton,
@@ -53,19 +59,10 @@ SkeletonComponent,
 data(){return{
 title:'Buy',
 back:'/',
-business:[
-{name:'Hardware'},
-{name:'Roofing'},
-{name:''},
+row:[],
+isLoading:false,
 
-],
 
-map:{
-location:'Masajja Zone A',
-district:'Wakiso District',
-weather:'Cloudy',
-degrees:'34C'
-}
 
 
 
@@ -78,10 +75,23 @@ degrees:'34C'
 
 
 methods:{
+business(){
+this.isLoading=true;
+const db=new BusinessController;
+db.business_category().then(res=>{
+this.isLoading=false;
+this.row=res.data;
+}).catch(error=>{
+console.log(error);
+});
+
+}
 
 
 
-
+},
+mounted(){
+this.business();
 },
 
 
@@ -103,7 +113,7 @@ box-shadow:none;
 }
 
 ion-searchbar{
---border-radius:30px;
+--border-radius:0px;
 font-size: 14px;
 --box-shadow:none;
 --background: white;
@@ -138,7 +148,6 @@ background:white;
 }
 
 ion-item{
-margin-bottom:5px;
-border-radius:10px;
+margin-bottom:1px;
 }
 </style>

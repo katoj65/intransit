@@ -1,22 +1,28 @@
 <template>
 <lay-out :title="title" :back="back">
-<div class="border" style="margin:5px;">
-<ion-item v-for="(m,key) in 30" :key="key" lines="none"  button @click="$router.push('/message/user')">
+<skeleton-component v-if="isLoading==true" style="margin:30px;"/>
+<div style="margin:10px;" v-else>
+
+
+<div v-if="row.length>0">
+<ion-item v-for="(l,key) in row" :key="key" lines="none"  button @click="$router.push('/message/user')">
 <ion-avatar slot="start">
 <img src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
 </ion-avatar>
 <ion-label class="ion-text-nowrap">
 <div>Joshua Kato
 <span style="float:right;font-size:13px;color:silver;">
-12/12/24
+{{ l.created_at.split('-',1).join('') }}
 </span>
 </div>
 <p>
-Multi-line text that should ellipsis when it is too long to fit on one line. Lorem ipsum dolor sit amet,
-consectetur adipiscing elit.
+{{ l.message }}
 </p>
 </ion-label>
 </ion-item>
+</div>
+<div v-else>No messages</div>
+
 
 
 </div>
@@ -27,16 +33,22 @@ consectetur adipiscing elit.
 import { addCircle, addOutline, listCircle, time, } from 'ionicons/icons';
 import { IonItem, IonLabel, IonAvatar } from '@ionic/vue';
 import LayOut from '@/components/LayOut.vue';
+import MessageController from '@/database/MessageController.js';
+import SkeletonComponent from '@/components/SkeletonComponent.vue';
 export default {
 components:{
 LayOut,
 IonItem,
 IonLabel,
-IonAvatar
+IonAvatar,
+SkeletonComponent,
 },
 data(){return{
 title:'Messages',
-back:'/'
+back:'/',
+row:[],
+error:null,
+isLoading:false,
 
 
 
@@ -45,8 +57,28 @@ back:'/'
 
 
 methods:{
+message(){
+this.isLoading=true;
+const id=1;
+const db=new MessageController;
+db.user_messages(id).then(res=>{
+if(res.status==200){
+this.row=res.data;
+this.isLoading=false;
+}else{
+error=res.error;
+}
+}).catch(error=>{console.log(error)});
+}
+
+},
 
 
+
+
+
+mounted(){
+this.message();
 },
 
 
@@ -77,10 +109,11 @@ border-radius:5px;
 
 
 }
-ion-item.userheader{
---background:#EBEDEF;
+ion-item{
+--background:white;
 --padding-bottom:5px;
 --padding-top:5px;
+margin-bottom:1px;
 }
 
 </style>

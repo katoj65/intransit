@@ -1,8 +1,9 @@
 <template>
 <lay-out :title="title" :back="back">
-<div style="margin:5px;border-bottom:none;" v-if="isLoading==true" class="border">
+<div style="margin:10px;border-bottom:none;" v-if="isLoading==false">
+<div v-if="error==null">
 <div v-if="row.length>0">
-<ion-item v-for="(l,key) in row" :key="key"  lines="none" class="border-bottom" detail="true" button @click="$router.push('/service/'+l.id+'/category')">
+<ion-item v-for="(l,key) in row" :key="key"  lines="none" detail="true" button @click="$router.push('/service/'+l.id+'/category')">
 <!-- <ion-avatar slot="start">
 <img :src="l.icon" style="height:40px;"/>
 </ion-avatar> -->
@@ -17,9 +18,14 @@
 No records
 </div>
 </div>
+<div v-else style="padding:30px;text-align:center;">
+{{ error }}
+</div>
+</div>
 <skeleton-component v-else style="margin:20px;"/>
 </lay-out>
 </template>
+
 <script>
 import ServiceConteroller from '@/database/ServiceController.js';
 import LayOut from '@/components/LayOut.vue';
@@ -31,17 +37,10 @@ IonInput,
 IonItem,
 IonLabel,
 IonNote,
+
+
 } from '@ionic/vue';
-import {
-create, ellipsisHorizontal, ellipsisVertical, helpCircle,
-location,
-notifications,
-personCircle,
-rainy,
-search,
-star,
-trailSign
-} from 'ionicons/icons';
+import {create,send } from 'ionicons/icons';
 import SkeletonComponent from '@/components/SkeletonComponent.vue';
 
 export default {
@@ -55,36 +54,19 @@ IonItem,
 IonInput,
 IonButton,
 SkeletonComponent
-
-
-
-
 },
+
 data(){return{
 title:'Services',
 back:'/',
 row:[],
 isLoading:false,
-
-list:[
-{name:'Weather',description:'',icon:'/icons/weather.png',url:'/weather/user'},
-{name:'Traffic',description:'',icon:'/icons/traffic.png',url:'/weather/user'},
-{name:'Fuel Prices',description:'',icon:'/icons/fuel.png',url:'/weather/user'},
-{name:'Mechanics',description:'',icon:'/icons/mechanic.png',url:'/weather/user'},
-{name:'Garage',description:'',icon:'/icons/garage.png',url:'/weather/user'},
-{name:'Washing Bay',description:'',icon:'/icons/washingbay.png',url:'/weather/user'},
-{name:'Night Parking',description:'',icon:'/icons/parking.png',url:'/weather/user'},
-{name:'Spare Parts',description:'',icon:'/icons/spare.png',url:'/weather/user'},
-{name:'Breakdown/ Towing',description:'',icon:'/icons/tow.png',url:'/weather/user'},
-
-],
-
+error:null,
 
 }},
 
 setup(){return{
-create, ellipsisHorizontal, ellipsisVertical, helpCircle, search, personCircle, star,
-notifications,location,rainy,trailSign
+create,send
 }},
 
 
@@ -95,16 +77,21 @@ notifications,location,rainy,trailSign
 //methods
 methods:{
 services(){
+this.isLoading=true;
 let db=new ServiceConteroller;
 db.get_services().then(res=>{
-this.isLoading=true;
+this.isLoading=false;
+if(res.error==null){
 this.row=res.data;
+}else{
+this.error=res.error.message;
+}
 }).catch(error=>{
 console.log(error);
 });
-
 }
 },
+
 
 
 mounted(){
@@ -130,14 +117,11 @@ padding:0;
 ion-item{
 padding-top:0;
 margin:0;
+margin-bottom:1px;
 }
 
 ion-button{
---background:#0c3e29;
-border:solid 2px white;
-border-radius:5px;
-margin:5px;
-margin-top:0;
+
 }
 
 ion-avatar{

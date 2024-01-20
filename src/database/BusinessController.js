@@ -1,18 +1,18 @@
 import supabase from "./connection";
-class BusinessController{
-async get_business(){
+export default class BusinessController{
+
+async business_category(){
 return  await supabase
-.from('business')
-.select('*')
+.from('business_category')
+.select('*');
 };
 
 
-
 async show_business(id){
-  return  await supabase
-    .from('business')
-    .select('*')
-    .eq('id',id);
+return  await supabase
+.from('business')
+.select('*')
+.eq('id',id);
 };
 
 

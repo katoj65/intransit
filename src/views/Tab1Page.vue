@@ -35,9 +35,7 @@
 </div> -->
 
 
-<div style="padding:10px;margin-top:15px;border-radius:20px 20px 0px 0px;background:white;">
-
-
+<div style="padding:10px;margin-top:10px;">
 
 <ion-item lines="none" v-for="(l,key) in list" :key="key" button   @click="$router.push(l.url)" detail="true">
 <ion-avatar slot="start" style="border-radius: 0;">
@@ -201,7 +199,11 @@ background:white;
 }
 
 ion-item{
-margin-bottom:5px;
-border-radius:10px;
+margin-bottom:1px;
+border-radius:0px;
+}
+
+p{
+color:gray;
 }
 </style>

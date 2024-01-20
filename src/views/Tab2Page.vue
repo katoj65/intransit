@@ -1,7 +1,7 @@
 <template>
 <lay-out :title="title">
-<div style="margin:5px;">
-<ion-item :button="true" v-for="(i,key) in items" :key="key" lines="none" class="border">
+<div style="margin:10px;">
+<ion-item :button="true" v-for="(i,key) in items" :key="key" lines="none">
 <ion-icon  slot="start" :icon="location"></ion-icon>
 <ion-label>
 <h2>{{ i.title }}</h2>
@@ -98,7 +98,7 @@ border-radius:5px;
 
 }
 ion-item{
-margin-bottom:5px;
+margin-bottom:1px;
 }
 
 </style>

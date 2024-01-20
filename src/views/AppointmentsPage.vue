@@ -3,7 +3,7 @@
 
 
 
-<div class="border" style="margin:5px;">
+<div style="margin:10px;">
 <ion-item v-for="(n,key) in 20" :key="key" lines="none" :button="true" @click="$router.push('/appointment/view')" detail="true">
 <ion-avatar aria-hidden="true" slot="start">
 <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
@@ -86,10 +86,12 @@ border-radius:5px;
 
 
 }
-ion-item.userheader{
---background:#EBEDEF;
+ion-item{
+--background:white;
 --padding-bottom:5px;
 --padding-top:5px;
+margin-bottom:1px;
+
 }
 
 </style>

@@ -8,11 +8,9 @@
 <p style="text-align:center;">Complete your profile.</p>
 <ion-card>
 <ion-card-content style="padding:0;">
-
-<create-user-profile v-if="user_details.role=='user'" />
-<create-agent-profile v-if="user_details.role=='agent'" />
-<create-transporter-profile v-if="user_details.role=='transporter'" />
-
+<create-user-profile v-if="user_details.role=='user'"/>
+<create-agent-profile v-if="user_details.role=='agent'"/>
+<create-transporter-profile v-if="user_details.role=='transporter'"/>
 </ion-card-content>
 </ion-card>
 </ion-content>

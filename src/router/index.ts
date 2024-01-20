@@ -78,6 +78,11 @@ path:'/account/login',
 component:LoginPage
 },
 {
+  path:'/account/create-profile',
+  component:()=>import('@/views/CompleteProfile.vue'),
+  name:'create-profile',
+},
+{
 path:'/account/select-role',
 name:'select role',
 component: SelectRole
@@ -116,7 +121,7 @@ children:[
 {
 path:'/transporters',
 component:()=>import('@/views/TransportPage.vue'),
-name:'transporter profile'
+name:'transporters'
 },
 {
 path:'/transporter/requests',
@@ -288,6 +293,12 @@ const router = createRouter({
 history: createWebHistory(import.meta.env.BASE_URL),
 routes
 });
+
+
+
+
+
+
 
 
 
