@@ -8,7 +8,7 @@
 </div>
 <h4 style="margin-bottom:30px;">REGISTER</h4>
 
-<div style="color:red;" v-if="error!=null" class="ion-padding">
+<div style="color:red;text-align:center;" v-if="error!=null" class="ion-padding">
 {{ error }}
 </div>
 <div>
@@ -68,7 +68,7 @@ if(response.data.error==null){
 
 this.isLoading=false;
 this.$store.commit('hasAccess');
-//this.$router.push('/account/create-profile');
+this.$router.push('/account/create-profile');
 console.log(response);
 
 
@@ -131,6 +131,7 @@ border-radius:5px;
 form{
 padding:0px;
 }
+
 ion-button{
 width:100%;
 --border-radius:5px;

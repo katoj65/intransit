@@ -83,9 +83,9 @@ component:LoginPage
   name:'create-profile',
 },
 {
-path:'/account/select-role',
-name:'select role',
-component: SelectRole
+path:'/account/choose-role',
+name:'choose role',
+component:()=>import('@/views/ChooseRole.vue'),
 },
 {
 path:'/account/complete-profile/:tag',
@@ -272,22 +272,9 @@ children:[
   ]
 },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ];
+
+
 
 const router = createRouter({
 history: createWebHistory(import.meta.env.BASE_URL),
@@ -295,28 +282,36 @@ routes
 });
 
 
-
-
-
-
-
-
-
-
 //Navigation Guard
 router.beforeEach((to, from,next)=>{
+
 const auth=store.state.session;
+
+if(store!=null){
+//
 if(to.name!='login'){
+//
 console.log(auth);
 if(auth==false){
 next('/login');
 }else{
 next();
 }
+
+//
 }else{
 next();
 }
+
+//
+}else{
+  next();
+}
+
+
 });
 
 
+
+//
 export default router;

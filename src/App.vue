@@ -6,14 +6,12 @@
 <script>
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 import { StatusBar, Style} from '@capacitor/status-bar';
-
+import LoginController from './database/LoginController.js';
 export default{
 components:{
 IonApp, IonRouterOutlet,
-
 },
 methods:{
-
 test(){
 //console.log(this.$store.state.session);
 },
@@ -31,6 +29,22 @@ async setStatusBarStyleLight(){
 await StatusBar.setStyle({ style: Style.Light });
 },
 
+//
+auth_session(){
+const db=new LoginController;
+this.$store.state.session=true;
+db.user_session().then((res)=>{
+if(res.data.error==null){
+const user=res.data.session.user.user_metadata;
+this.$store.commit('hasAccess');
+this.$router.push('/');
+}else{
+console.log(res.data.error);
+}
+}).catch((error)=>{
+console.log(error);
+});
+}
 
 
 
@@ -44,6 +58,7 @@ this.test();
 this.status();
 this.settings();
 this.setStatusBarStyleLight();
+this.auth_session();
 },
 
 computed:{

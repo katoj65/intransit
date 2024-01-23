@@ -6,7 +6,9 @@
 
 
 
-<div v-if="isLoading==false">
+
+
+<div v-if="isLoading2==false">
 <div style="text-align:center;padding-left:42%;padding-right:42%;">
 <ion-avatar style="text-align:center">
 <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
@@ -15,36 +17,23 @@
 <h4><span style="font-weight:bold;text-transform:capitalize;"> {{ user.names }}</span></h4>
 <p style="text-align:center;">
 </p>
-<p style="text-align:center;">Complete your profile</p>
+<p style="text-align:center;">Select your preferences</p>
 <ion-card>
-<ion-card-content style="padding:0;padding-right:10px;">
+<ion-card-content style="padding-left:10px;padding-right:10px;">
 <div v-if="error!=null" class="ion-padding" style="text-align:center;">
 {{ error }}
 </div>
 <form @submit.prevent="submit">
-<ion-list>
-<ion-item>
-<ion-select aria-label="Gender" placeholder="Select gender" @ionChange="handleChange($event)">
-<ion-select-option value="male">Male</ion-select-option>
-<ion-select-option value="female">Female</ion-select-option>
-<ion-select-option value="other">Other</ion-select-option>
-</ion-select>
+<ion-radio-group value="" v-if="row.length>0" @ionChange="handleChange($event)">
+<ion-item v-for="(r,key) in row" :key="key">
+<ion-radio :value="r.tag">
+{{ r.name }}
+</ion-radio>
 </ion-item>
-<ion-item>
-<ion-input placeholder="Enter your physical address" v-model="form.address"></ion-input>
-</ion-item>
-<ion-item>
-<ion-input placeholder="Enter telephone number" type="number" v-model="form.tel"></ion-input>
-</ion-item>
-
-
-<ion-item lines="none" style="padding-bottom:10px;padding-top:10px;">
-<ion-button v-if="isLoading2==false" fill="clear" expand="block" type="submit">Save profile</ion-button>
-<ion-button expand="block" fill="clear" disabled v-else><ion-spinner></ion-spinner></ion-button>
-</ion-item>
-
-
-</ion-list>
+</ion-radio-group>
+<div style="padding-top:10px;margin-top:20px;">
+<submit-button :isLoading="isLoading" :title="'Continue'"/>
+</div>
 </form>
 </ion-card-content>
 </ion-card>
@@ -53,19 +42,19 @@
 <skeleton-component/>
 </div>
 
-
-
-
-
-
-
 </ion-content>
 </ion-page>
 </template>
 <script>
-import { IonCard, IonCardContent, IonCardTitle, IonContent, IonPage, IonInput, IonAvatar,IonSelect, IonSelectOption, IonItem, IonList, IonSpinner, IonButton} from '@ionic/vue';
+import { IonCard, IonCardContent, IonCardTitle, IonContent, IonPage,
+IonInput, IonAvatar,IonSelect, IonSelectOption, IonItem,
+IonList, IonSpinner,IonRadio, IonRadioGroup,
+
+} from '@ionic/vue';
 import LoginController from '@/database/LoginController.js';
 import SkeletonComponent from '@/components/SkeletonComponent.vue';
+import SubmitButton from '@/components/SubmitButton.vue';
+import RoleController from '@/database/RoleController.js';
 
 
 export default {
@@ -73,8 +62,8 @@ components:{
 IonPage, IonContent,IonCard,
 IonCardContent, IonCardTitle,
 SkeletonComponent, IonInput,IonAvatar,IonSelect,
-IonSelectOption,IonItem, IonList,IonSpinner,IonButton
-
+IonSelectOption,IonItem, IonList,IonSpinner,
+IonRadio, IonRadioGroup,SubmitButton
 
 
 
@@ -86,27 +75,28 @@ email:null
 },
 error:null,
 form:{
-gender:'',
-address:'',
-tel:'',
+role:'',
 },
 
 isLoading:false,
 isLoading2:false,
+row:[],
 
 }},
 
 
 methods:{
-
-
-//
+//handle change
+handleChange(ev) {
+this.form=ev.detail.value;
+},
+//profile
 user_profile(){
-this.isLoading=true;
+this.isLoading2=true;
 const db=new LoginController;
 db.this_user().then((res)=>{
 if(res.data.error==null){
-this.isLoading=false;
+this.roles();
 const user=res.data.user.user_metadata;
 this.user.names=user.firstname+' '+user.lastname;
 }else{
@@ -117,26 +107,41 @@ console.log(error);
 });
 },
 
-
-
-//
+//submit
 submit(){
 this.isLoading2=true;
 const db=new LoginController;
-db.update_user_metadata(this.form).then((res)=>{
+const role=this.form.role;
+db.set_role(role).then((res)=>{
 if(res.data.error==null){
-this.$router.push('/account/choose-role');
+this.$router.push('/');
 }else{
 this.error='Error has occurred';
 console.log(res.data.error);
 }
+console.log(res);
 }).catch((error)=>{console.log(error)});
 },
 
-//set role
-handleChange(ev) {
- this.form.gender=ev.detail.value;
+
+
+//roles
+roles(){
+const db=new RoleController;
+db.roles().then((res)=>{
+if(res.status==200){
+this.isLoading2=false;
+this.row=res.data;
+}else{
+this.error=res.data.error;
+}
+}).catch((error)=>{
+console.log(error);
+});
+
+
 },
+
 },
 
 
@@ -172,6 +177,7 @@ padding:0;
 box-shadow:none;
 border:none;
 border-radius:0;
+padding-bottom:0;
 }
 
 ion-select{
@@ -201,6 +207,11 @@ margin-bottom:10px;
 --padding:15px;
 color:white;
 box-shadow: none;
+}
+
+ion-radio{
+padding:10px;
+display: block;
 }
 
 

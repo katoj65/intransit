@@ -1,6 +1,6 @@
 <template>
 <form @submit.prevent="submit">
-    <h4 style="text-align:center;color:white;padding:15px;font-weight:bold;">Agent profile</h4>
+<h4 style="text-align:center;color:white;padding:15px;font-weight:bold;">Agent profile</h4>
 <ion-input label="Outline input" label-placement="floating" fill="outline" placeholder="Enter text" class="custom"></ion-input>
 
 <ion-input label="Outline input" label-placement="floating" fill="outline" placeholder="Enter text" class="custom"></ion-input>

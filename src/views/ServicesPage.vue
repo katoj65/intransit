@@ -66,7 +66,7 @@ error:null,
 }},
 
 setup(){return{
-create,send
+create, send
 }},
 
 
@@ -93,7 +93,7 @@ console.log(error);
 },
 
 
-
+//
 mounted(){
 this.services();
 }

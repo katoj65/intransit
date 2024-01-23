@@ -17,12 +17,13 @@ title:{}
 </script>
 <style scoped>
 ion-button{
---border-radius:5px;
---background:#34495E;
-margin:0;
-margin-bottom:10px;
---padding:15px;
-color:white;
+    width:100%;
+    --border-radius:5px;
+    --background:#34495E;
+    margin:0;
+    margin-bottom:10px;
+    --padding:15px;
+    color:white;
 
-}
+    }
 </style>
