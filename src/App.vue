@@ -19,12 +19,10 @@ test(){
 status(){
 // this.$store.commit('loggedOut');
 },
-
 //settings
 async settings(){
 await StatusBar.setBackgroundColor({ color: '#F0F3F4' });
 },
-
 async setStatusBarStyleLight(){
 await StatusBar.setStyle({ style: Style.Light });
 },

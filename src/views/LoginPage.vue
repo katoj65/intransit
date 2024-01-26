@@ -61,7 +61,7 @@ const db=new LoginController;
 db.login(this.form).then((res)=>{
 this.isLoading=false;
 if(res.data.error==null){
-this.$store.commit('hasAccess');
+// this.$store.commit('hasAccess');
 this.$router.push('/');
 }else{
 this.error=res.data.error;
@@ -72,8 +72,7 @@ this.error=error.name;
 console.log(error);
 });
 
-// this.$store.commit('hasAccess');
-// this.$router.push('/');
+
 }else{
 error='Fill in all fields';
 }
