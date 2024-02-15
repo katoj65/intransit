@@ -24,16 +24,6 @@
   </ion-tab-button>
 
 
-
-
-
-
-<ion-tab-button tab="tab3" href="/messages">
-<ion-icon aria-hidden="true" :icon="mail" />
-<ion-label>Message</ion-label>
-</ion-tab-button>
-
-
 <ion-tab-button tab="tab4" href="/wallet/user">
   <ion-icon aria-hidden="true" :icon="wallet" />
   <ion-label>Wallet</ion-label>
@@ -88,12 +78,13 @@ mail
 </script>
 <style scoped>
 ion-tabs{
-background:#F0F3F4;
+background:white;
 }
 ion-tab-bar{
---background:#F0F3F4;
+--background:white;
 border-bottom: none;
 box-shadow:5px 5px 5px 7px #D6DBDF;
+border-top:solid thin #AEB6BF;
 
 }
 </style>

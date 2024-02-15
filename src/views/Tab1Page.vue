@@ -1,17 +1,19 @@
 <template>
 <lay-out :title="title">
 <template #subtitle>
-<div style="background:#F0F3F4;">
-<div style="background:#F0F3F4;padding:5px;">
+<div style="background:#196F3D;">
+<div style="background:#196F3D;padding:5px;">
 <ion-searchbar placeholder="Search..." class="custom"></ion-searchbar>
 </div>
 </div>
 </template>
-<div style="padding-left:10px;padding-right:10px;">
+
+
+<!-- <div>
 <ion-chip @click="$router.push('/transporters')">Transporters</ion-chip>
 <ion-chip  @click="$router.push('/buy')">Buy Items</ion-chip>
 <ion-chip @click="$router.push('/services/view')">Other Services</ion-chip>
-</div>
+</div> -->
 
 
 
@@ -34,15 +36,21 @@
 </ion-grid>
 </div> -->
 
+<div class="ion-padding" v-if="isLoading==true">
+<skeletonComponent/>
+</div>
+<div v-else>
 
-<div style="padding:10px;margin-top:10px;">
 
-<ion-item lines="none" v-for="(l,key) in list" :key="key" button   @click="$router.push(l.url)" detail="true">
+
+
+
+<ion-item lines="none" v-for="(l,key) in row" :key="key" button   @click="$router.push(l.url)" detail="true">
 <ion-avatar slot="start" style="border-radius: 0;">
 <img :src="l.icon" style="width:40px;border-radius:0;"/>
 </ion-avatar>
 <ion-label style="font-size:18px;">
-{{ l.title }}
+{{ l.name }}
 <p> {{ l.description }} </p>
 </ion-label>
 <ion-note slot="end" style="font-size:16px;">
@@ -77,12 +85,12 @@ IonLabel,
 IonNote,
 IonChip
 
-
 } from '@ionic/vue';
 import { time,location,wallet,searchCircle } from 'ionicons/icons';
 import  SkeletonComponent  from "@/components/SkeletonComponent.vue";
 import BannerComponent from '@/components/BannerComponent.vue';
 import MainTab from '@/components/MainTab.vue';
+import ServiceConteroller from '@/database/ServiceController';
 export default {
 components:{
 IonButton,
@@ -104,7 +112,9 @@ IonChip
 
 },
 data(){return{
-title:'Logistic services',
+title:'Logistics',
+isLoading:false,
+row:[],
 list:[
 
 {title:'Transporters',icon:'/icons/lorry.png',url:'/transporters',id:1, description:'Lorries, pickups and trucks'},
@@ -139,10 +149,24 @@ degrees:'34C'
 
 
 methods:{
+service(){
+const db=new ServiceConteroller;
+this.isLoading=true;
+db.service_category().then((res)=>{
+this.isLoading=false;
+if(res.status==200){
+this.row=res.data;
+}
+}).catch((error)=>{console.log(error)});
+}
 
 
 
+},
 
+
+mounted(){
+this.service();
 },
 
 

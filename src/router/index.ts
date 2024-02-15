@@ -25,6 +25,15 @@ import BuyTab from '../views/BuyTab.vue';
 
 //authentication
 import store from '../store/index.js';
+import supabase from '../database/connection.js';
+async function status(){
+const {data} = await supabase.auth.getSession();
+return data;
+}
+let a=[];
+status().then((res)=>{a.push(res)});
+console.log();
+
 
 const routes: Array<RouteRecordRaw> = [
 {
@@ -188,6 +197,7 @@ children:[
   path:'/login',
   component:()=>import('@/views/LoginPage.vue'),
   name:'login',
+  meta:{auth:null},
 
 },
 {
@@ -272,6 +282,18 @@ children:[
   ]
 },
 
+{
+path:'/my-profile',
+redirect:'/user/profile'
+},
+{
+path:'/user/profile',
+component:()=>import('@/views/MyProfile.vue'),
+name:'profile',
+
+}
+
+
 ];
 
 
@@ -291,7 +313,7 @@ if(store!=null){
 //
 if(to.name!='login'){
 //
-console.log(auth);
+// console.log(auth);
 if(auth==false){
 next('/login');
 }else{

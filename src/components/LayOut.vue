@@ -1,21 +1,20 @@
 <template>
 <ion-page>
-<ion-header class="ion-no-border" style="background:#F0F3F4;">
+<ion-header class="ion-no-border">
 <ion-toolbar class="ion-no-border" >
 <ion-buttons slot="start">
 <ion-back-button default-href="#" v-if="back!=null" @click="$router.push(back)"></ion-back-button>
 </ion-buttons>
-
-
-
  <ion-buttons slot="end">
 <ion-button @click="$router.push('/my-location')">
 <ion-icon :ios="location" :md="location"></ion-icon>
 </ion-button>
 
-<ion-button @click="$router.push('/services')">
-<ion-icon :ios="folderOpen" :md="folderOpen"></ion-icon>
+
+<ion-button @click="$router.push('/messages/view')">
+<ion-icon :ios="mail" :md="mail"></ion-icon>
 </ion-button>
+
 
 <ion-button @click="$router.push('/settings')">
 <ion-icon :ios="menu" :md="menu"></ion-icon>
@@ -44,7 +43,7 @@ IonBackButton, IonButton, IonButtons, IonIcon,
 IonSearchbar
 } from '@ionic/vue';
 import { create, ellipsisHorizontal, menu, helpCircle, search, personCircle, star,
-notifications,location,folderOpen
+notifications,location,mail
 } from 'ionicons/icons';
 
 
@@ -66,7 +65,7 @@ data(){return{
 setup(){
 return{
 create, ellipsisHorizontal, menu, helpCircle, search, personCircle, star,
-notifications,location,folderOpen
+notifications,location,mail
 }
 }
 
@@ -78,12 +77,14 @@ notifications,location,folderOpen
 </script>
 <style scoped>
 ion-toolbar {
---background:#F0F3F4;
+--background:#196F3D;
 --color:black;
 --min-height: 50px;
 --padding-top: 10px;
 --padding-bottom:0px;
+color:white;
 }
+
 ion-searchbar{
 --background:#EBEDEF;
 --box-shadow: none;
@@ -92,5 +93,13 @@ font-size: 14px;
 }
 ion-header{
 border-bottom:none;
+--background:#196F3D;
+color:white;
+}
+ion-icon{
+color:white;
+}
+ion-back-button{
+color:white;
 }
 </style>

@@ -3,7 +3,7 @@
 
 
 
-<div style="margin:10px;">
+<div>
 <ion-item v-for="(n,key) in 20" :key="key" lines="none" :button="true" @click="$router.push('/appointment/view')" detail="true">
 <ion-avatar aria-hidden="true" slot="start">
 <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />

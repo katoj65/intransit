@@ -1,10 +1,38 @@
 import { createStore } from 'vuex';
-// Create a new store instance.
+// import authentication from '../auth/authentication';
+// const Auth=new authentication;
+
+//login session
+import supabase from '../database/connection.js';
+const { data, error } = supabase.auth.getSession();
+let login_status=false;
+
+// if(data.session!=null){
+// login_status=true;
+// }
+
+// console.log(data);
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
 const store = createStore({
 state:{
-session:false,
+session:null,
 connection:null,
-  },
+//
+},
+
 settings:{
 driver_chat:{
 options:[
@@ -31,10 +59,5 @@ state.connection='Connecting....';
 
 
 });
-
-
-
-
-
 
 export default store;

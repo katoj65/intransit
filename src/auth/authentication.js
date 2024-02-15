@@ -1,3 +1,16 @@
 import supabase from '../database/connection.js';
-const auth=true;
-export default auth;
+export default class authentication{
+async auth_status(){
+const { data, error } = await supabase.auth.getSession();
+return data;
+}
+
+
+
+
+
+
+
+
+
+}

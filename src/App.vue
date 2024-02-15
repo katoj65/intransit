@@ -21,10 +21,10 @@ status(){
 },
 //settings
 async settings(){
-await StatusBar.setBackgroundColor({ color: '#F0F3F4' });
+await StatusBar.setBackgroundColor({ color: '#196F3D' });
 },
 async setStatusBarStyleLight(){
-await StatusBar.setStyle({ style: Style.Light });
+await StatusBar.setStyle({ style: Style.Dark });
 },
 
 //
@@ -33,7 +33,7 @@ const db=new LoginController;
 this.$store.state.session=true;
 db.user_session().then((res)=>{
 if(res.data.error==null){
-const user=res.data.session.user.user_metadata;
+// const user=res.data.session.user.user_metadata;
 this.$store.commit('hasAccess');
 this.$router.push('/');
 }else{
@@ -130,6 +130,8 @@ ion-toolbar {
   ion-header{
   border-bottom:none;
   }
+
+
   .border-bottom-light{
   border-bottom:solid 1px #ECF0F1;
   }

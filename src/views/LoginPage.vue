@@ -7,6 +7,9 @@
 <img src="/logo4.png" style="width:100%"/>
 </div>
 
+
+{{ $store.state.session }}
+
 <!-----error message-->
 <div class="ion-padding" style="color:red;" v-if="error">
 {{ error }}
@@ -61,8 +64,8 @@ const db=new LoginController;
 db.login(this.form).then((res)=>{
 this.isLoading=false;
 if(res.data.error==null){
-// this.$store.commit('hasAccess');
-this.$router.push('/');
+this.$store.commit('hasAccess');
+this.$router.push('/tabs/tab1');
 }else{
 this.error=res.data.error;
 console.log(res.data.error);
@@ -71,7 +74,6 @@ console.log(res.data.error);
 this.error=error.name;
 console.log(error);
 });
-
 
 }else{
 error='Fill in all fields';
@@ -88,6 +90,12 @@ error='Fill in all fields';
 
 
 
+},
+
+//before route enter
+beforeRouteEnter(to,from,next){
+// console.log(to);
+next();
 }
 
 

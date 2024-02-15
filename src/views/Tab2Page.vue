@@ -1,6 +1,6 @@
 <template>
 <lay-out :title="title">
-<div style="margin:10px;">
+<div>
 <ion-item :button="true" v-for="(i,key) in items" :key="key" lines="none">
 <ion-icon  slot="start" :icon="location"></ion-icon>
 <ion-label>
