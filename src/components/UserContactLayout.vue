@@ -98,10 +98,12 @@ notifications,location,car,mail
 </script>
 <style scoped>
 ion-toolbar {
---background:white;
+--background:#196F3D;
+color:white;
 --min-height: 50px;
 --padding-top: 0px;
 --padding-bottom:0px;
+
 }
 
 ion-chip {
@@ -119,6 +121,8 @@ ion-button.title{
 ion-toolbar{
 border-bottom:solid 2px #F2F3F4;
 padding-bottom:5px;
+--background:#196F3D;
+color:white;
 
 }
 

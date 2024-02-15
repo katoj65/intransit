@@ -3,47 +3,16 @@
 <template #subtitle>
 <div style="background:#196F3D;">
 <div style="background:#196F3D;padding:5px;">
-<ion-searchbar placeholder="Search..." class="custom"></ion-searchbar>
+<ion-searchbar placeholder="Search for service..." class="custom"></ion-searchbar>
 </div>
 </div>
 </template>
 
 
-<!-- <div>
-<ion-chip @click="$router.push('/transporters')">Transporters</ion-chip>
-<ion-chip  @click="$router.push('/buy')">Buy Items</ion-chip>
-<ion-chip @click="$router.push('/services/view')">Other Services</ion-chip>
-</div> -->
-
-
-
-<!-- <main-tab/> -->
-<!-- <SkeletonComponent/> -->
-
-<!-- <div style="padding:5px;">
-<banner-component class="border" style="margin:0;border-radius: 10px;"/>
-<ion-grid>
-<ion-row>
-<ion-col size="4" v-for="(l,key) in list" :key="key" button class="border" @click="$router.push(l.url)" style="border-radius: 5px;">
-<div style="background:white;border-radius:2px;padding:5px;text-align:center;padding-top:10px;height:90px;" class="menu">
-<img :src="l.icon" style="width:40px;"/>
-<p style="font-size:13px;text-align:center;padding:0;margin-top:-1px;">
-{{ l.title }}
-</p>
-</div>
-</ion-col>
-</ion-row>
-</ion-grid>
-</div> -->
-
 <div class="ion-padding" v-if="isLoading==true">
 <skeletonComponent/>
 </div>
 <div v-else>
-
-
-
-
 
 <ion-item lines="none" v-for="(l,key) in row" :key="key" button   @click="$router.push(l.url)" detail="true">
 <ion-avatar slot="start" style="border-radius: 0;">
@@ -58,13 +27,7 @@
 </ion-item>
 
 
-
 </div>
-
-
-
-
-
 
 
 </lay-out>

@@ -1,7 +1,7 @@
 <template>
 <lay-out :title="title" :back="back">
 <skeleton-component v-if="isLoading==true" style="margin:30px;"/>
-<div style="margin:10px;" v-else>
+<div v-else>
 
 
 <div v-if="row.length>0">
