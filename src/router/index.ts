@@ -38,7 +38,7 @@ console.log();
 const routes: Array<RouteRecordRaw> = [
 {
 path: '/',
-redirect:'/tabs/tab1'
+redirect:'/login'
 },
 {
 path: '/tabs/',
@@ -337,3 +337,4 @@ next();
 
 //
 export default router;
+//

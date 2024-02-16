@@ -1,8 +1,8 @@
 <template>
 <lay-out :title="title">
 <template #subtitle>
-<div style="background:#196F3D;">
-<div style="background:#196F3D;padding:5px;">
+<div style="background:#148F77;">
+<div style="background:#148F77;padding:5px;">
 <ion-searchbar placeholder="Search for service..." class="custom"></ion-searchbar>
 </div>
 </div>

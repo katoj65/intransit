@@ -3,9 +3,14 @@
 <form @submit.prevent="submit" style="padding:0;"  v-if="status==false">
 
 <div>
-<div style="padding:50px;padding-bottom:30px;padding-top:80px;">
-<img src="/logo4.png" style="width:100%"/>
-</div>
+    <div style="padding:50px;padding-bottom:10px;padding-top:80px;text-align:center;">
+        <img src="/icon-white.png" style="width:100px;"/>
+        <h1 style="font-weight:bold;color:white;font-size:30px;">
+          Intransit
+        </h1>
+        </div>
+
+
 <h4 style="margin-bottom:30px;">REGISTER</h4>
 
 <div style="color:red;text-align:center;" v-if="error!=null" class="ion-padding">

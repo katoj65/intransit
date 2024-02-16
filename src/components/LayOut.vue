@@ -77,7 +77,7 @@ notifications,location,mail
 </script>
 <style scoped>
 ion-toolbar {
---background:#196F3D;
+--background:#148F77;
 --color:black;
 --min-height: 50px;
 --padding-top: 10px;
@@ -93,7 +93,7 @@ font-size: 14px;
 }
 ion-header{
 border-bottom:none;
---background:#196F3D;
+--background:#148F77;
 color:white;
 }
 ion-icon{

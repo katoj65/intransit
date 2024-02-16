@@ -21,7 +21,7 @@ status(){
 },
 //settings
 async settings(){
-await StatusBar.setBackgroundColor({ color: '#196F3D' });
+await StatusBar.setBackgroundColor({ color: '#148F77' });
 },
 async setStatusBarStyleLight(){
 await StatusBar.setStyle({ style: Style.Dark });
